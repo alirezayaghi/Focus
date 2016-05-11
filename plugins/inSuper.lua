@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = 'گروه باموفقیت ثبت شد'
+	  local text = '☞گروه باموفقیت ثبت شد☜'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been removed'
+	  local text = 'گروه از لیست حذف شد🚫'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -104,15 +104,15 @@ end
 
 --Get and output info about supergroup
 local function callback_info(cb_extra, success, result)
-local title ="Info for SuperGroup ☞["..result.title.."]\n\n"
-local admin_num = "Admin count☞"..result.admins_count.."\n"
-local user_num = "User count ☞ "..result.participants_count.."\n"
-local kicked_num = "Kicked user count ☞ "..result.kicked_count.."\n"
-local channel_id = "ID ☞ "..result.peer_id.."\n"
+local title ="اطلاعات سوپر گروه☞["..result.title.."]\n\n"
+local admin_num = "#Admin count☞"..result.admins_count.."\n"
+local user_num = "#User count ☞ "..result.participants_count.."\n"
+local kicked_num = "#Kicked user count ☞ "..result.kicked_count.."\n"
+local channel_id = "#ID ☞ "..result.peer_id.."\n"
 if result.username then
-	channel_username = "Username ☞@"..result.username
+	channel_username = "#Username ☞@"..result.username
 else
-	channel_username = "@Teleirans"
+	channel_username = "@Team_focus"
 end
 local text = title..admin_num..user_num..kicked_num..channel_id..channel_username
     send_large_msg(cb_extra.receiver, text)
@@ -179,11 +179,11 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return '*Link posting is already locked'
+    return 'ℹLink posting is already locked🔒'
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return '*Link posting has been locked'
+    return 'ℹLink posting has been locked🔒'
   end
 end
 
@@ -193,11 +193,11 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return '*Link posting is not locked'
+    return '*Link posting is not locked🔐'
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return '*Link posting has been unlocked'
+    return '*Link posting has been unlocked🔓'
   end
 end
 
@@ -206,15 +206,15 @@ local function lock_group_spam(msg, data, target)
     return
   end
   if not is_owner(msg) then
-    return "*Owners only!"
+    return "ℹOwners only"
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'yes' then
-    return '*SuperGroup spam is already locked'
+    return 'ℹSuperGroup spam is already locked🔒'
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return '*SuperGroup spam has been locked'
+    return 'ℹSuperGroup spam has been locked🔒'
   end
 end
 
@@ -224,11 +224,11 @@ local function unlock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'no' then
-    return '*SuperGroup spam is not locked'
+    return 'ℹSuperGroup spam is not locked🔐'
   else
     data[tostring(target)]['settings']['lock_spam'] = 'no'
     save_data(_config.moderation.data, data)
-    return '*SuperGroup spam has been unlocked'
+    return 'ℹSuperGroup spam has been unlocked🔓'
   end
 end
 
@@ -238,11 +238,11 @@ local function lock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'yes' then
-    return '*Spamming is already locked'
+    return 'ℹSpamming is already locked🔒'
   else
     data[tostring(target)]['settings']['flood'] = 'yes'
     save_data(_config.moderation.data, data)
-    return '*Spamming has been locked'
+    return 'ℹSpamming has been locked🔒'
   end
 end
 
@@ -252,11 +252,11 @@ local function unlock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'no' then
-    return '*Spamming is not locked'
+    return 'ℹSpamming is not locked🔐'
   else
     data[tostring(target)]['settings']['flood'] = 'no'
     save_data(_config.moderation.data, data)
-    return '*Spamming has been unlocked'
+    return 'ℹSpamming has been unlocked🔓'
   end
 end
 

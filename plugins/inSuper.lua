@@ -1258,7 +1258,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "> Group ID: "..msg.to.id.."\n> Group Name: "..msg.to.title.."\n> First Name: "..(msg.from.first_name or '').."\n> Last Name: "..(msg.from.last_name or '').."\n> Your ID: "..msg.from.id.."\n> Username: @"..(msg.from.username or '').."\n> Phone Number: +"..(msg.from.phone or '')			end
+				return "☞ #Group ID: "..msg.to.id.."\n> #Group Name: "..msg.to.title.."\n☞ #First Name: "..(msg.from.first_name or '').."\n☞ #Last Name: "..(msg.from.last_name or '').."\n☞ #Your ID: "..msg.from.id.."\n☞ #Username: @"..(msg.from.username or '').."\n☞ #Phone Number: +"..(msg.from.phone or '')			end
 		end
 
 		if matches[1] == 'kickme' then
@@ -1288,14 +1288,14 @@ local function run(msg, matches)
 		if matches[1] == 'setlink' and is_owner(msg) then
 			data[tostring(msg.to.id)]['settings']['set_link'] = 'waiting'
 			save_data(_config.moderation.data, data)
-			return 'Please send the new group link now!'
+			return 'لطفا لینک جدید را ارسال کنید'
 		end
 
 		if msg.text then
 			if msg.text:match("^(https://telegram.me/joinchat/%S+)$") and data[tostring(msg.to.id)]['settings']['set_link'] == 'waiting' and is_owner(msg) then
 				data[tostring(msg.to.id)]['settings']['set_link'] = msg.text
 				save_data(_config.moderation.data, data)
-				return "New link set !"
+				return "عملیات باموفقیت انجام شد"
 			end
 		end
 
@@ -1305,10 +1305,10 @@ local function run(msg, matches)
 			end
 			local group_link = data[tostring(msg.to.id)]['settings']['set_link']
 			if not group_link then
-				return "> Create a link using /newlink first!\n\nOr if I am not creator use /setlink to set your link"
+				return "ℹهشدار شما هنوز لینکی نساختید برای ساخت لینک جدیداز دستور /newlinkاستفاده کنید وبرای عوض کردن لینک خوداز دستور/setlinkاستفاده کنید"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "Group link:\n> "..group_link
+			return "لینک گروه:\n "..group_link
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
@@ -1443,7 +1443,7 @@ local function run(msg, matches)
 				return
 			end
 			if not is_owner(msg) then
-				return "*Error \nOnly owner/admin can promote"
+				return "ℹError \nOnly owner/admin can promote"
 			end
 			if type(msg.reply_id) ~= "nil" then
 				local cbreply_extra = {
@@ -1487,7 +1487,7 @@ local function run(msg, matches)
 				return
 			end
 			if not is_owner(msg) then
-				return "*Error \nOnly owner/support/admin can promote"
+				return "ℹError \nOnly owner/support/admin can promote"
 			end
 			if type(msg.reply_id) ~= "nil" then
 				local cbreply_extra = {
@@ -1569,7 +1569,7 @@ local function run(msg, matches)
 			data[tostring(msg.to.id)]['settings']['set_photo'] = 'waiting'
 			save_data(_config.moderation.data, data)
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] started setting new SuperGroup photo")
-			return '> Please send the new group photo now!'
+			return 'لطفا عکس جدیدگروه را ارسال کنید'
 		end
 
 		if matches[1] == 'clean' then
@@ -1886,9 +1886,9 @@ local function run(msg, matches)
 				if is_muted(chat_id, msg_type..': yes') then
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] set SuperGroup to: unmute "..msg_type)
 					unmute(chat_id, msg_type)
-					return "> Mute "..msg_type.." has been disabled"
+					return "ℹ Mute "..msg_type.." has been disabled"
 				else
-					return "> Mute "..msg_type.." is already disabled"
+					return "ℹ Mute "..msg_type.." is already disabled"
 				end
 			end
 		end
@@ -1907,11 +1907,11 @@ local function run(msg, matches)
 				if is_muted_user(chat_id, user_id) then
 					unmute_user(chat_id, user_id)
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] removed ["..user_id.."] from the muted users list")
-					return "> ["..user_id.."] removed from the muted users list"
+					return "ℹ ["..user_id.."] removed from the muted users list"
 				elseif is_owner(msg) then
 					mute_user(chat_id, user_id)
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] added ["..user_id.."] to the muted users list")
-					return "> ["..user_id.."] added to the muted user list"
+					return "ℹ ["..user_id.."] added to the muted user list"
 				end
 			elseif matches[1] == "muteuser" and not string.match(matches[2], '^%d+$') then
 				local receiver = get_receiver(msg)
@@ -1949,7 +1949,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "Message /superhelp to @TeleSeed_Plus in private for SuperGroup help."
+			text = "برای گرفتن دستورات سوپر گروه دستور /superhelpرا درپیوی @Focus_robotبزنید"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)

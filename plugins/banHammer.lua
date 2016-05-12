@@ -26,17 +26,17 @@ local function pre_process(msg)
         print('User is banned!')
       local print_name = user_print_name(msg.from):gsub("‮", "")
 	  local name = print_name:gsub("_", "")
-        savelog(msg.to.id, name.." ["..msg.from.id.."] added a banned user >"..msg.action.user.id)-- Save to logs
+        savelog(msg.to.id, name.." ["..msg.from.id.."] added a banned user "..msg.action.user.id)-- Save to logs
         kick_user(user_id, msg.to.id)
         local banhash = 'addedbanuser:'..msg.to.id..':'..msg.from.id
         redis:incr(banhash)
         local banhash = 'addedbanuser:'..msg.to.id..':'..msg.from.id
         local banaddredis = redis:get(banhash)
         if banaddredis then
-          if tonumber(banaddredis) >= 4 and not is_owner(msg) then
+          if tonumber(banaddredis) = 4 and not is_owner(msg) then
             kick_user(msg.from.id, msg.to.id)-- Kick user who adds ban ppl more than 3 times
           end
-          if tonumber(banaddredis) >=  8 and not is_owner(msg) then
+          if tonumber(banaddredis) =  8 and not is_owner(msg) then
             ban_user(msg.from.id, msg.to.id)-- Kick user who adds ban ppl more than 7 times
             local banhash = 'addedbanuser:'..msg.to.id..':'..msg.from.id
             redis:set(banhash, 0)-- Reset the Counter
@@ -54,7 +54,7 @@ local function pre_process(msg)
       if string.sub(msg.action.user.username:lower(), -3) == 'bot' and not is_momod(msg) and bots_protection == "yes" then --- Will kick bots added by normal users
           local print_name = user_print_name(msg.from):gsub("‮", "")
 		  local name = print_name:gsub("_", "")
-          savelog(msg.to.id, name.." ["..msg.from.id.."] added a bot > @".. msg.action.user.username)-- Save to logs
+          savelog(msg.to.id, name.." ["..msg.from.id.."] added a bot  @".. msg.action.user.username)-- Save to logs
           kick_user(msg.action.user.id, msg.to.id)
       end
     end
@@ -124,10 +124,10 @@ local function kick_ban_res(extra, success, result)
         redis:srem(hash, member_id)
         return 'Done\n User Unbanned'
       elseif get_cmd == 'banall' then
-        send_large_msg(receiver, '> ['..user_id..' ] Banned for all Groups/SuperGroups! (Globally banned)')
+        send_large_msg(receiver, ' ['..user_id..' ] Banned for all Groups/SuperGroups! (Globally banned)')
 		banall_user(member_id)
       elseif get_cmd == 'unbanall' then
-        send_large_msg(receiver, '> ['..user_id..' ] Unbanned for all Groups/SuperGroups! (Unglobally banned)')
+        send_large_msg(receiver, ' ['..user_id..' ] Unbanned for all Groups/SuperGroups! (Unglobally banned)')
 	    unbanall_user(member_id)
     end
 end
@@ -136,7 +136,7 @@ local function run(msg, matches)
 local support_id = msg.from.id
  if matches[1]:lower() == 'id' and msg.to.type == "chat" or msg.to.type == "user" then
     if msg.to.type == "user" then
-      return "Bot ID > |"..msg.to.id.."|\nYour ID > "..msg.from.id
+      return "Bot ID☞  |"..msg.to.id.."|\nYour ID☞  "..msg.from.id
     end
     if type(msg.reply_id) ~= "nil" then
       local print_name = user_print_name(msg.from):gsub("‮", "")
@@ -146,7 +146,7 @@ local support_id = msg.from.id
     elseif matches[1]:lower() == 'id' then
       local name = user_print_name(msg.from)
       savelog(msg.to.id, name.." ["..msg.from.id.."] used /id ")
-      return "> Group ID: "..msg.to.id.."\n> Group Name: "..msg.to.title.."\n> First Name: "..(msg.from.first_name or '').."\n> Last Name: "..(msg.from.last_name or '').."\n> Your ID: "..msg.from.id.."\n> Username: @"..(msg.from.username or '').."\n> Phone Number: +"..(msg.from.phone or '').."\n> Your Link: Telegram.Me/"..(msg.from.username or '')	
+      return "☞ #Group ID: "..msg.to.id.."\n☞ #Group Name: "..msg.to.title.."\n☞ #First Name: "..(msg.from.first_name or '').."\n☞ #Last Name: "..(msg.from.last_name or '').."\n☞ #Your ID: "..msg.from.id.."\n☞ #Username: @"..(msg.from.username or '').."\n☞ #Phone Number: +"..(msg.from.phone or '').."\n☞ #Your Link: Telegram.Me/"..(msg.from.username or '')	
     end
   end
   if matches[1]:lower() == 'kickme' and msg.to.type == "chat" then-- /kickme
@@ -308,7 +308,7 @@ end
           	return false
         end
        		unbanall_user(user_id)
-        	return '> ['..user_id..' ] Unbanned for all Groups/SuperGroups! (Unglobally banned)'
+        	return ' ['..user_id..' ] Unbanned for all Groups/SuperGroups! (Unglobally banned)'
     else
 		local cbres_extra = {
 			chat_id = msg.to.id,

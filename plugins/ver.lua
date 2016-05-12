@@ -1,8 +1,15 @@
 do
 
 function run(msg, matches)
-  return [[ 
-T e L e S e e d +
+  return [[ F O C U S
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+#Channel: @Team_Focus
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+#IDBot: @Focus_robot
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+#SUDO: @Xxx_sargardan_xxX
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+#version: 1
 ]]
 end
 

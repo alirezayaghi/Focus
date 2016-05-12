@@ -334,7 +334,7 @@ function create_config( )
 
 ︿﹀︿﹀︿﹀︿﹀︿﹀︿﹀
 
-Channel: @teleirans
+Channel: @Team_Focus
 ]],
     help_text =[[
 English commands:
@@ -444,7 +444,7 @@ Will return group ban list
 ☎️Send /share to get robot number
 ︿﹀︿﹀︿﹀︿﹀︿﹀︿﹀
 
-Channel: @Teleirans
+Channel: @Team_Focus
 ]],
 	help_text_super = [[
 SuperGroup Commands:
@@ -555,7 +555,7 @@ Set chat visibility in pm !chats or !chatlist commands
 ︾︽︾︽︾︽︾︽︾︽︾︽
 میتوانید از دو کاراکتر'!'و'/'برای دادن دستورات استفاده کنید۰
 
-Channel: @teleirans
+Channel: @Team_Focus
 ]],
   }
   serialize_to_file(config, './data/config.lua')

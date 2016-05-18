@@ -41,7 +41,7 @@ local function list_variables2(msg, value)
     local text = ''
     for i=1, #names do
 	if string.match(value, names[i]) and not is_momod(msg) then
-	if msg.to.type == 'channel' then
+	if msg.to.type == '@Team_Focus' then
 	delete_msg(msg.id,ok_cb,false)
 	else
 	kick_user(msg.from.id, msg.to.id)

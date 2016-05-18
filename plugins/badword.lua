@@ -18,7 +18,7 @@ local function list_variablesbad(msg)
     local names = redis:hkeys(hash)
     local text = 'لیست کلمات غیرمجاز :\n\n'
     for i=1, #names do
-      text = text..'> '..names[i]..'\n'
+      text = text..'☞ '..names[i]..'\n'
     end
     return text
 	else
@@ -109,3 +109,4 @@ return {
   },
   run = run
 }
+--By@Team_focus

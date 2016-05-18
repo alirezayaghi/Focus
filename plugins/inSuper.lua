@@ -105,12 +105,12 @@ end
 --Get and output info about supergroup
 local function callback_info(cb_extra, success, result)
 local title ="اطلاعات سوپر گروه☞["..result.title.."]\n\n"
-local admin_num = "#Admin count☞"..result.admins_count.."\n"
-local user_num = "#User count ☞ "..result.participants_count.."\n"
-local kicked_num = "#Kicked user count ☞ "..result.kicked_count.."\n"
-local channel_id = "#ID ☞ "..result.peer_id.."\n"
+local admin_num = "تعداد ادمین☞"..result.admins_count.."\n"
+local user_num = "تعداد اعضا ☞ "..result.participants_count.."\n"
+local kicked_num = "تعداد افراد کیک شده ☞ "..result.kicked_count.."\n"
+local channel_id = "ایدی ☞ "..result.peer_id.."\n"
 if result.username then
-	channel_username = "#Username ☞@"..result.username
+	channel_username = "یوزرنیم ☞@"..result.username
 else
 	channel_username = "@Team_focus"
 end
@@ -149,7 +149,7 @@ end
 --Get and output list of kicked users for supergroup
 local function callback_kicked(cb_extra, success, result)
 --vardump(result)
-local text = "Kicked Members for SuperGroup "..cb_extra.receiver.."\n\n> "
+local text = "Kicked Members for SuperGroup "..cb_extra.receiver.."\n\n☞ "
 local i = 1
 for k,v in pairsByKeys(result) do
 if not v.print_name then
@@ -322,11 +322,11 @@ local function lock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'yes' then
-    return 'ℹRTL is already locked'
+    return 'ℹRTL is already locked🔒'
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'ℹRTL has been locked'
+    return 'ℹRTL has been locked🔒'
   end
 end
 
@@ -336,11 +336,11 @@ local function unlock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'no' then
-    return 'ℹRTL is already unlocked'
+    return 'ℹRTL is already unlocked🔓'
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'ℹRTL has been unlocked'
+    return 'ℹRTL has been unlocked🔓'
   end
 end
 
@@ -350,11 +350,11 @@ local function lock_group_tgservice(msg, data, target)
   end
   local group_tgservice_lock = data[tostring(target)]['settings']['lock_tgservice']
   if group_tgservice_lock == 'yes' then
-    return 'ℹTGservice is already locked'
+    return 'ℹTGservice is already locked🔒'
   else
     data[tostring(target)]['settings']['lock_tgservice'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'ℹTGservice has been locked'
+    return 'ℹTGservice has been locked🔒'
   end
 end
 
@@ -364,11 +364,11 @@ local function unlock_group_tgservice(msg, data, target)
   end
   local group_tgservice_lock = data[tostring(target)]['settings']['lock_tgservice']
   if group_tgservice_lock == 'no' then
-    return 'ℹTGService Is Not Locked!'
+    return 'ℹTGService Is Not Locked🔐'
   else
     data[tostring(target)]['settings']['lock_tgservice'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'ℹTGservice has been unlocked'
+    return 'ℹTGservice has been unlocked🔓'
   end
 end
 
@@ -378,11 +378,11 @@ local function lock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'yes' then
-    return 'ℹSticker posting is already locked'
+    return 'ℹSticker posting is already locked🔒'
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'ℹSticker posting has been locked'
+    return 'ℹSticker posting has been locked🔒'
   end
 end
 
@@ -392,11 +392,11 @@ local function unlock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'no' then
-    return 'ℹSticker posting is already unlocked'
+    return 'ℹSticker posting is already unlocked🔓'
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'ℹSticker posting has been unlocked'
+    return 'ℹSticker posting has been unlocked🔓'
   end
 end
 
@@ -406,11 +406,11 @@ local function lock_group_contacts(msg, data, target)
   end
   local group_contacts_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'yes' then
-    return 'ℹContact posting is already locked'
+    return 'ℹContact posting is already locked🔒'
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'ℹContact posting has been locked'
+    return 'ℹContact posting has been locked🔒'
   end
 end
 
@@ -420,11 +420,11 @@ local function unlock_group_contacts(msg, data, target)
   end
   local group_contacts_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'no' then
-    return 'ℹContact posting is already unlocked'
+    return 'ℹContact posting is already unlocked🔓'
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'ℹContact posting has been unlocked'
+    return 'ℹContact posting has been unlocked🔓'
   end
 end
 
@@ -591,7 +591,7 @@ local function promote2(receiver, member_username, user_id)
   local group = string.gsub(receiver, 'channel#id', '')
   local member_tag_username = string.gsub(member_username, '@', '(at)')
   if not data[group] then
-    return send_large_msg(receiver, 'SuperGroup is not added.')
+    return send_large_msg(receiver, 'سوپر گروه اد نشد')
   end
   if data[group]['moderators'][tostring(user_id)] then
     return send_large_msg(receiver, member_username..' is already a moderator.')
@@ -605,7 +605,7 @@ local function demote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
   if not data[group] then
-    return send_large_msg(receiver, 'Group is not added.')
+    return send_large_msg(receiver, 'گروه اد نشد😣')
   end
   if not data[group]['moderators'][tostring(user_id)] then
     return send_large_msg(receiver, member_tag_username..' is not a moderator.')
@@ -1080,7 +1080,7 @@ local function set_supergroup_photo(msg, success, result)
     channel_set_photo(receiver, file, ok_cb, false)
     data[tostring(msg.to.id)]['settings']['set_photo'] = file
     save_data(_config.moderation.data, data)
-    send_large_msg(receiver, 'Photo saved!', ok_cb, false)
+    send_large_msg(receiver, 'عکس ذخیره شد', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
     send_large_msg(receiver, '*Failed, please try again!', ok_cb, false)
@@ -1116,7 +1116,7 @@ local function run(msg, matches)
 				return
 			end
 			if is_super_group(msg) then
-				return reply_msg(msg.id, 'SuperGroup is already added.', ok_cb, false)
+				return reply_msg(msg.id, '✪سوپر گروه باموفقت ثبت شد✪', ok_cb, false)
 			end
 			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") added")
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] added SuperGroup")
@@ -1276,7 +1276,7 @@ local function run(msg, matches)
 					data[tostring(msg.to.id)]['settings']['set_link'] = nil
 					save_data(_config.moderation.data, data)
 				else
-					send_large_msg(receiver, "Created a new link")
+					send_large_msg(receiver, "لینک جدید ساخته شد")
 					data[tostring(msg.to.id)]['settings']['set_link'] = result
 					save_data(_config.moderation.data, data)
 				end
@@ -1305,10 +1305,10 @@ local function run(msg, matches)
 			end
 			local group_link = data[tostring(msg.to.id)]['settings']['set_link']
 			if not group_link then
-				return "ℹهشدار شما هنوز لینکی نساختید برای ساخت لینک جدیداز دستور /newlinkاستفاده کنید وبرای عوض کردن لینک خوداز دستور/setlinkاستفاده کنید"
+				return "ℹهشدار شما هنوز لینکی نساختید برای ساخت لینک جدیداز دستور  /newlink استفاده کنید وبرای عوض کردن لینک خوداز دستور /setlink استفاده کنید"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "لینک گروه:\n "..group_link
+			return "لینک سوپرگروه:\n "..group_link
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
@@ -1949,7 +1949,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "برای گرفتن دستورات سوپر گروه دستور /superhelpرا درپیوی @Focus_robotبزنید"
+			text = "برای گرفتن دستورات سوپر گروه دستور /superhelp را درپیوی         @Focus_robot بزنید"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
@@ -2082,3 +2082,4 @@ return {
   pre_process = pre_process
 }
 --End supergrpup.lua
+--by @Team_focus

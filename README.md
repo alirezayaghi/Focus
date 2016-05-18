@@ -4,7 +4,6 @@
 
 * *news*
 
-* **[Sudo:](https://telegram.me/Xxx_sargardan_xxX)**   
+* **Sudo:[sargardan](https://telegram.me/Xxx_sargardan_xxX)**   
 
-* **[Channel:](
-# https://telegram.me/Team_Focus)**
+* **Channel:[Focus Team](https://telegram.me/Team_Focus)**

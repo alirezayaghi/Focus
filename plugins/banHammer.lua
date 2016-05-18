@@ -91,7 +91,7 @@ local function kick_ban_res(extra, success, result)
 	  if chat_type == "chat" then
 		receiver = 'chat#id'..chat_id
 	  else
-		receiver = 'channel#id'..chat_id
+		receiver = 'channel#@Team_Focus'..chat_id
 	  end
 	  if success == 0 then
 		return send_large_msg(receiver, "*Error 404\nCannot find user by that username!")
@@ -184,10 +184,10 @@ local support_id = msg.from.id
          	return
         end
         if not is_admin1(msg) and is_momod2(matches[2], msg.to.id) then
-          	return "*Error \nYou can't ban mods/owner/admins"
+          	return "☞Error \nYou can't ban mods/owner/admins"
         end
         if tonumber(matches[2]) == tonumber(msg.from.id) then
-          	return "*Error"
+          	return "☞Error"
         end
         local print_name = user_print_name(msg.from):gsub("‮", "")
 	    local name = print_name:gsub("_", "")
@@ -247,10 +247,10 @@ if matches[1]:lower() == 'kick' then
 			return
 		end
 		if not is_admin1(msg) and is_momod2(matches[2], msg.to.id) then
-			return "*Error \nYou can't kick mods/owner/admins"
+			return "🚫Error \nYou can't kick mods/owner/admins"
 		end
 		if tonumber(matches[2]) == tonumber(msg.from.id) then
-			return "*Error"
+			return "🚫Error"
 		end
     local user_id = matches[2]
     local chat_id = msg.to.id
@@ -288,7 +288,7 @@ end
          	return false
         end
         	banall_user(targetuser)
-       		return '> ['..user_id..' ] Banned for all Groups/SuperGroups! (Globally banned)'
+       		return '☞ ['..user_id..' ] Banned for all Groups/SuperGroups! (Globally banned)'
      else
 	local cbres_extra = {
 		chat_id = msg.to.id,
@@ -347,3 +347,5 @@ return {
   run = run,
   pre_process = pre_process
 }
+
+--by @Team-Focus

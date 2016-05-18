@@ -232,7 +232,6 @@ function create_config( )
     "antiRejoin",
     "pmLoad",
     "inSudo",
-    "blackPlus",
     "toSticker(Text_to_stick)",
     "toPhoto_By_Reply",
     "inPm",

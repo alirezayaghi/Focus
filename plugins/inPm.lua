@@ -90,7 +90,7 @@ if to == 'user' or service or is_admin1(msg) and to == "chat" or to == "channel"
 	end
     if matches[1] == 'join' then
 	local data = load_data(_config.moderation.data)
-	if matches[2]:lower() == 'blackplus' and matches[3]:lower() == 'support' then
+	if matches[2]:lower() == 'Focus' and matches[3]:lower() == 'support' then
 		savelog(msg.to.id, name_log.." ["..msg.from.id.."] tried to join blackplus support")
 		local target = 1031459611
 		local long_id = data[tostring(target)]['long_id']

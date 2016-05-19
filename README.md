@@ -2,7 +2,7 @@
    
 * **opan GitHub**
 
-* *news*
+* ***news***
 
 * **Sudo:[sargardan](https://telegram.me/Xxx_sargardan_xxX)**   
 
